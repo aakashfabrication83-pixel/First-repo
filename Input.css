@@ -1,6 +1,0 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Keep the custom design system in styles.css.
-   This file is the Tailwind CLI entry point if you want a compiled build. */

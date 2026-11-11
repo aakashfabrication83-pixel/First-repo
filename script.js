@@ -19,18 +19,20 @@ document.getElementById("enquiryForm").addEventListener("submit", event => {
   event.preventDefault();
 
   const data = new FormData(event.currentTarget);
-  const subject = "Website Enquiry — " + data.get("name");
+  const customerName = data.get("name").trim();
+  const phone = (data.get("phone") || "").trim();
+  const subject = "Website Enquiry — " + customerName;
   const body = [
     "NEW WEBSITE ENQUIRY — ACF CRANE FABRICATORS",
     "",
-    "Name: " + data.get("name"),
-    "Phone: " + data.get("phone"),
+    "Name: " + customerName,
+    "Phone: " + (phone || "Not provided"),
     "Requirement: " + data.get("service"),
     "",
     "Project details:",
-    data.get("message") || "Not provided",
+    (data.get("message") || "").trim() || "Not provided",
     "",
-    "Please contact the customer using the phone number above."
+    "Please contact the customer using the details provided."
   ].join("\n");
 
   const mailto = "mailto:" + BUSINESS_EMAIL
